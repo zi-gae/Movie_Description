@@ -1,18 +1,24 @@
 import React from "react";
-import { HashRouter, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from "react-router-dom";
 import Home from "Routes/Home";
 import TV from "Routes/TV";
 import Search from "Routes/Search";
 
-const Router = () => (
-  <HashRouter>
-    <>
+export default () => (
+  <Router>
+    <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/tv" exact component={TV} />
-      <Route path="/search" exact component={Search} />
-      {/* exact 가 붙으면 경로와 정확히 일치 해야한다. */}
-    </>
-  </HashRouter>
+      <Route path="/tv" component={TV} />
+      <Route path="/search" component={Search} />
+      <Redirect from="*" to="/" />
+    </Switch>
+  </Router>
 );
-
-export default Router;
+// exact 경로와 완벽히 일치 해야함.
+// Redirect 라우터의 else 같은 역할
+// Switch 중복되는 경로가 있어 두개의 라우터가 render 되는걸 막아줌
