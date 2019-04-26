@@ -21,3 +21,5 @@ const globalStyle = createGlobalStyle`
 `;
 
 export default globalStyle;
+
+// reset => 컴포넌트 기본 속성을 reset 하고 시작함

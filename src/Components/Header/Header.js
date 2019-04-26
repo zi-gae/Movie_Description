@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+// Link => react 에서 reload 하지 않고 페이지를 라우팅함 (href를 대체)
+// withRouter => 다른 컴포넌트를 감싸는 컴포넌트 그리고 라우터에 정보를
 import styled from "styled-components";
 
 const Header = styled.header`
@@ -11,7 +13,6 @@ const Header = styled.header`
   height: 50px;
   display: flex;
   align-items: center;
-  padding: 0px 10px;
   background-color: rgba(20, 20, 20, 0.8);
   z-index: 10;
   box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.8);
@@ -20,7 +21,7 @@ const Header = styled.header`
 const List = styled.ul`
   display: flex;
   &:hover {
-    background-color: blue;
+    background-color: rgba(20, 20, 20, 0.8);
   }
 `;
 
@@ -28,6 +29,9 @@ const Item = styled.li`
   width: 60px;
   height: 50px;
   text-align: center;
+  border-bottom: 5px solid
+    ${props => (props.current ? "#3498db" : "transparent")};
+  transition: border-bottom 0.3s ease-in-out;
 `;
 
 const SLink = styled(Link)`
@@ -37,18 +41,19 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
-export default () => (
+export default withRouter(({ location: { pathname } }) => (
   <Header>
+    {console.log(pathname)}
     <List>
-      <Item>
+      <Item current={pathname === "/"}>
         <SLink to="/">Movies</SLink>
       </Item>
-      <Item>
+      <Item current={pathname === "/tv"}>
         <SLink to="/tv">TV</SLink>
       </Item>
-      <Item>
+      <Item current={pathname === "/search"}>
         <SLink to="/search">Search</SLink>
       </Item>
     </List>
   </Header>
-);
+));
