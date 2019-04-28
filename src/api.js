@@ -7,4 +7,17 @@ const api = axios.create({
     language: "en-US"
   }
 });
-export default api;
+
+export const TVApi = {
+  nowPlaying: () => api.get("/movie/now_playing"),
+  upcomming: () => api.get("/movie/upcoming"),
+  popular: () => api.get("/movie/popular"),
+  movie: id => api.get(`/movei/${id}`)
+};
+
+export const MovieApi = {
+  topRated: () => api.get("/tv/top_rated"),
+  popular: () => api.get("/tv/popular"),
+  ariringToday: () => api.get("/tv/airing_today"),
+  showDetail: id => api.get(`/tv/${id}`)
+};
