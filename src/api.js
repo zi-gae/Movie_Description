@@ -4,20 +4,42 @@ const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   params: {
     api_key: "cb2d5c76ad119ebd27b5a9859c5a4995",
-    language: "en-US"
+    language: "ko-KR"
   }
 });
 
 export const TVApi = {
-  nowPlaying: () => api.get("/movie/now_playing"),
-  upcomming: () => api.get("/movie/upcoming"),
-  popular: () => api.get("/movie/popular"),
-  movie: id => api.get(`/movei/${id}`)
+  nowPlaying: () => api.get("movie/now_playing"),
+  upcomming: () => api.get("movie/upcoming"),
+  popular: () => api.get("movie/popular"),
+  movieDetail: id =>
+    api.get(`movei/${id}`, {
+      params: {
+        append_to_response: "videos"
+      }
+    }),
+  search: term =>
+    api.get("search/movie", {
+      params: {
+        query: encodeURIComponent(term)
+      }
+    })
 };
 
 export const MovieApi = {
-  topRated: () => api.get("/tv/top_rated"),
-  popular: () => api.get("/tv/popular"),
-  ariringToday: () => api.get("/tv/airing_today"),
-  showDetail: id => api.get(`/tv/${id}`)
+  topRated: () => api.get("tv/top_rated"),
+  popular: () => api.get("tv/popular"),
+  ariringToday: () => api.get("tv/airing_today"),
+  showDetail: id =>
+    api.get(`tv/${id}`, {
+      params: {
+        append_to_response: "videos"
+      }
+    }),
+  search: term =>
+    api.get("search/tv", {
+      params: {
+        query: encodeURIComponent(term)
+      }
+    })
 };
