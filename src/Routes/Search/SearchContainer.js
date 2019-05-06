@@ -14,7 +14,8 @@ class SearchContainer extends Component {
   componentDidMount = () => {
     this.handleSubmit();
   };
-  handleSubmit = () => {
+  handleSubmit = e => {
+    e.preventDefault();
     const { searchTerm } = this.state;
     if (searchTerm !== "") {
       this.searchByTerm();

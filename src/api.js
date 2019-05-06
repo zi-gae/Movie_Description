@@ -11,7 +11,7 @@ const api = axios.create({
 
 export const movieApi = {
   nowPlaying: () => api.get("movie/now_playing"),
-  upcomming: () => api.get("movie/upcoming"),
+  upcoming: () => api.get("movie/upcoming"),
   popular: () => api.get("movie/popular"),
   movieDetail: id =>
     api.get(`movie/${id}`, {
@@ -30,7 +30,7 @@ export const movieApi = {
 export const tvApi = {
   topRated: () => api.get("tv/top_rated"),
   popular: () => api.get("tv/popular"),
-  ariringToday: () => api.get("tv/airing_today"),
+  airingToday: () => api.get("tv/airing_today"),
   showDetail: id =>
     api.get(`tv/${id}`, {
       params: {

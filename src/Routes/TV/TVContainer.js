@@ -6,7 +6,7 @@ class TVContainer extends Component {
   state = {
     topRated: null,
     popular: null,
-    ariringToday: null,
+    airingToday: null,
     error: null,
     loading: true
   };
@@ -14,8 +14,8 @@ class TVContainer extends Component {
   componentDidMount = async () => {
     try {
       const {
-        data: { results: ariringToday }
-      } = await tvApi.ariringToday();
+        data: { results: airingToday }
+      } = await tvApi.airingToday();
       const {
         data: { results: popular }
       } = await tvApi.popular();
@@ -23,7 +23,7 @@ class TVContainer extends Component {
         data: { results: topRated }
       } = await tvApi.topRated();
       this.setState({
-        ariringToday,
+        airingToday,
         popular,
         topRated
       });
@@ -38,12 +38,12 @@ class TVContainer extends Component {
     }
   };
   render() {
-    const { topRated, popular, ariringToday, error, loading } = this.state;
+    const { topRated, popular, airingToday, error, loading } = this.state;
     return (
       <TVPresenter
         topRated={topRated}
         popular={popular}
-        ariringToday={ariringToday}
+        airingToday={airingToday}
         error={error}
         loading={loading}
       />
