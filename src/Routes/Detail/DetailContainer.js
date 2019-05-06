@@ -49,17 +49,9 @@ class DetailContainer extends Component {
     }
   };
   render() {
-    const { nowPlaying, upcomming, popular, error, loading } = this.state;
+    const { result, error, loading } = this.state;
 
-    return (
-      <DetailPresenter
-        nowPlaying={nowPlaying}
-        upcomming={upcomming}
-        popular={popular}
-        error={error}
-        loading={loading}
-      />
-    );
+    return <DetailPresenter result={result} error={error} loading={loading} />;
   }
 }
 
