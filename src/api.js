@@ -5,6 +5,7 @@ const api = axios.create({
   params: {
     api_key: "cb2d5c76ad119ebd27b5a9859c5a4995",
     language: "ko-KR"
+    // language: "en-US"
   }
 });
 
@@ -13,7 +14,7 @@ export const movieApi = {
   upcomming: () => api.get("movie/upcoming"),
   popular: () => api.get("movie/popular"),
   movieDetail: id =>
-    api.get(`movei/${id}`, {
+    api.get(`movie/${id}`, {
       params: {
         append_to_response: "videos"
       }
