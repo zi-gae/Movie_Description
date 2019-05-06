@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import HomePresenter from "./HomePresenter";
+import DetailPresenter from "./DetailPresenter";
 
-class HomeContainer extends Component {
+class DetailContainer extends Component {
   state = {
     nowPlaying: null,
     upcomming: null,
@@ -12,7 +12,7 @@ class HomeContainer extends Component {
   render() {
     const { nowPlaying, upcomming, popular, error, loading } = this.state;
     return (
-      <HomePresenter
+      <DetailPresenter
         nowPlaying={nowPlaying}
         upcomming={upcomming}
         popular={popular}
@@ -23,4 +23,4 @@ class HomeContainer extends Component {
   }
 }
 
-export default HomeContainer;
+export default DetailContainer;
