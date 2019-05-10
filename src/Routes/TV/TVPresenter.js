@@ -5,7 +5,7 @@ import Section from "../../Components/Section";
 import Loader from "../../Components/Loader";
 
 const Container = styled.div`
-  padding: 0px 10px;
+  padding: 0px 20px;
 `;
 
 const TVPresenter = ({ topRated, popular, airingToday, error, loading }) => {
@@ -15,15 +15,23 @@ const TVPresenter = ({ topRated, popular, airingToday, error, loading }) => {
     <Container>
       {topRated && topRated.length > 0 && (
         <Section title="현재 방영 중 TV">
-          {topRated.map(show => show.name)}
+          {topRated.map(show => (
+            <span key={show.id}>{show.name}</span>
+          ))}
         </Section>
       )}
       {popular && popular.length > 0 && (
-        <Section title="인기 방영 TV">{popular.map(show => show.name)}</Section>
+        <Section title="인기 방영 TV">
+          {popular.map(show => (
+            <span key={show.id}>{show.name}</span>
+          ))}
+        </Section>
       )}
       {airingToday && airingToday.length > 0 && (
         <Section title="오늘 방영 예정 TV">
-          {airingToday.map(show => show.name)}
+          {airingToday.map(show => (
+            <span key={show.id}>{show.name}</span>
+          ))}
         </Section>
       )}
     </Container>

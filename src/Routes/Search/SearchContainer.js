@@ -11,9 +11,6 @@ class SearchContainer extends Component {
     loading: false
   };
 
-  componentDidMount = () => {
-    this.handleSubmit();
-  };
   handleSubmit = e => {
     e.preventDefault();
     const { searchTerm } = this.state;
@@ -21,6 +18,17 @@ class SearchContainer extends Component {
       this.searchByTerm();
     }
   };
+
+  updateTerm = e => {
+    const {
+      target: { value }
+    } = e;
+    console.log(value);
+    this.setState({
+      searchTerm: value
+    });
+  };
+
   searchByTerm = async () => {
     const { searchTerm } = this.state;
     try {
@@ -59,6 +67,7 @@ class SearchContainer extends Component {
         error={error}
         loading={loading}
         handleSubmit={this.handleSubmit}
+        updateTerm={this.updateTerm}
       />
     );
   }
