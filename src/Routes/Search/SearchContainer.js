@@ -8,7 +8,8 @@ class SearchContainer extends Component {
     tvResults: null,
     searchTerm: "",
     error: null,
-    loading: false
+    loading: false,
+    inputState: false
   };
 
   handleSubmit = e => {
@@ -23,7 +24,6 @@ class SearchContainer extends Component {
     const {
       target: { value }
     } = e;
-    console.log(value);
     this.setState({
       searchTerm: value
     });
@@ -48,7 +48,7 @@ class SearchContainer extends Component {
       });
     } catch (error) {
       this.setState({
-        error: "검색 결과를 찾지 못했습니다"
+        error: "예상치 못한 에러가 발생했습니다."
       });
     } finally {
       this.setState({
@@ -68,6 +68,7 @@ class SearchContainer extends Component {
         loading={loading}
         handleSubmit={this.handleSubmit}
         updateTerm={this.updateTerm}
+        errMessage={this.errMessage}
       />
     );
   }
